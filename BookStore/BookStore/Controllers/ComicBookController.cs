@@ -1,29 +1,31 @@
-﻿
-using BookStore.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using BookStore.Data;
 using BookStore.Models;
 
-namespace Thi.Controllers
+namespace BookStore.Controllers
 {
-    public class ComicBooksController : Controller
+    public class ComicBookController : Controller
     {
         private readonly ComicStoreDatabaseContext _context;
 
-        public ComicBooksController(ComicStoreDatabaseContext context)
+        public ComicBookController(ComicStoreDatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: ComicBooks
+        // GET: ComicBook
         public async Task<IActionResult> Index()
         {
             return View(await _context.ComicBooks.ToListAsync());
         }
 
-        // GET: ComicBooks/Details/5
+        // GET: ComicBook/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,13 +43,13 @@ namespace Thi.Controllers
             return View(comicBooks);
         }
 
-        // GET: ComicBooks/Create
+        // GET: ComicBook/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ComicBooks/Create
+        // POST: ComicBook/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +65,7 @@ namespace Thi.Controllers
             return View(comicBooks);
         }
 
-        // GET: ComicBooks/Edit/5
+        // GET: ComicBook/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,7 +80,10 @@ namespace Thi.Controllers
             }
             return View(comicBooks);
         }
-        
+
+        // POST: ComicBook/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ComicBookID,Title,Author,PricePerDay")] ComicBooks comicBooks)
@@ -111,7 +116,7 @@ namespace Thi.Controllers
             return View(comicBooks);
         }
 
-        // GET: ComicBooks/Delete/5
+        // GET: ComicBook/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,7 +134,7 @@ namespace Thi.Controllers
             return View(comicBooks);
         }
 
-        // POST: ComicBooks/Delete/5
+        // POST: ComicBook/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

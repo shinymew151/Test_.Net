@@ -1,4 +1,4 @@
-﻿@model BookStore.Models.ComicBooks
+@model BookStore.Models.ComicBooks
 
 @{
     ViewData["Title"] = "Delete";
@@ -30,7 +30,7 @@
             @Html.DisplayFor(model => model.PricePerDay)
         </dd>
     </dl>
-
+    
     <form asp-action="Delete">
         <input type="hidden" asp-for="ComicBookID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

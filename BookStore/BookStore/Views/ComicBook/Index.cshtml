@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookStore.Models.ComicBooks>
+@model IEnumerable<BookStore.Models.ComicBooks>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,21 +11,21 @@
 </p>
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PricePerDay)
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PricePerDay)
+            </th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -42,6 +42,6 @@
                 <a asp-action="Delete" asp-route-id="@item.ComicBookID">Delete</a>
             </td>
         </tr>
-    }
+}
     </tbody>
 </table>
